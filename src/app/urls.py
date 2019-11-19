@@ -1,5 +1,4 @@
 """app URL Configuration
-
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
 Examples:
@@ -15,14 +14,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+import polaris.urls
 
-urlpatterns = [
-    path("admin", admin.site.urls),
-    path("info", include("info.urls")),
-    path("fee", include("fee.urls")),
-    path("", include("transaction.urls")),
-    path("deposit", include("deposit.urls")),
-    path(".well-known", include("stellartoml.urls")),
-    path("withdraw", include("withdraw.urls")),
-    path("auth", include("sep10auth.urls")),
-]
+urlpatterns = [path("admin", admin.site.urls), path("", include(polaris.urls))]
