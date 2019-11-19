@@ -4,7 +4,7 @@
 
 IMPORTANT DISCLAIMER: This code should not be used in production without a thorough security audit.
 
-This project is a WIP example implementation of a Stellar anchor server. 
+This project demonstrates how to use the `django-polaris` resuable django app to run an anchor server.
 
 Its goal is to provide a community example implementation of [SEP 24](https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0024.md) (and the related SEP [10](https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0010.md)). We hope to make it easier for anchors to integrate with the Stellar network, as they can refer to this sample implementation in their own development. Note that this implementation itself should not be utilized directly (i.e., forked) for handling real amounts of real money.
 
@@ -30,17 +30,14 @@ If you are planning to run this in production, you need to follow the following 
 1. Now, run [this script](https://github.com/msfeldstein/create-stellar-token), using the issuer seed and distribution seed of the accounts just created. You can decide the name of your asset and amount to issue. This will issue an asset and send some amount of that asset to the distribution account.
 1. Finally, modify the `SERVER_JWT_KEY` to a more secure phrase for more secure SEP-10 authentication. 
 
-Note that the above steps are aimed at creating an environment plugged into the Stellar test network ("testnet"), rather than the public Stellar network ("mainnet"). If you want to run this application on the main network, you will also need to change the value of `STELLAR_NETWORK` in `.env` to `PUBLIC`, and the `HORIZON_URI` to a URL of a Horizon running on the public network (e.g., `https://horizon.stellar.org`).
+Note that the above steps are aimed at creating an environment plugged into the Stellar test network ("testnet"), rather than the public Stellar network ("mainnet"). If you want to run this application on the main network, you will also need to change the value of `STELLAR_NETWORK_PASSPHRASE` in `.env` to `Public Global Stellar Network ; September 2015`, and the `HORIZON_URI` to a URL of a Horizon running on the public network (e.g., `https://horizon.stellar.org`).
 
 ## Running the project locally with Docker
 The project can be run via Docker Compose. We recommend this approach for easier use.
 1. Install Docker Compose following the appropriate instructions [here](https://docs.docker.com/compose/install/)
-1. You'll need a `.env` file (or the equivalent env vars defined). We provide a sample one, which you can copy and modify: `$ cp .env.example .env`
-1. Modify the Stellar account in `.env` as below.
 1. Modify the `SERVER_JWT_KEY` in `.env` to a more secure phrase, to allow for more secure SEP-10 authentication.
 1. Build the Docker image, from the root directory: `docker-compose build`
-1. Run the database migrations, from the root directory: `docker-compose run web pipenv run python src/manage.py migrate`
-1. Set up the Django admin user, from the root directory: `docker-compose run web pipenv run python src/manage.py createsuperuser`
+1. Set up the Django admin user, from the root directory: `docker-compose run server pipenv run python src/manage.py createsuperuser`
 1. Run the Docker image, from the root directory: `docker-compose up`
 
 ## Running the project locally without Docker
@@ -48,12 +45,9 @@ The project can be run via Docker Compose. We recommend this approach for easier
 This project was built using Pipenv. If you do not want to install Docker, here is another route, involving individually installing components.
 
 1. Install pipenv: `$ brew install pipenv` (on macOS)
-1. Install redis: `$ brew install redis` (on macOS)
 1. Inside the repo's root, install the project's dependencies: `$ pipenv install`
 1. Run the database migrations: `$ pipenv run python src/manage.py migrate`
 1. Set up the admin user: `$ pipenv run python src/manage.py createsuperuser`. Provide a username, email, and password of your choice.
-1. Run the redis server in the background: `$ redis-server --daemonize yes`
-1. Run celery: `$ pipenv run celery worker --app app --beat --workdir src -l info`
 1. Run a script to stream withdrawal transactions from Horizon: `$ pipenv run python src/manage.py watch_transactions`
 1. Run the project: `$ pipenv run python src/manage.py runserver`
 
