@@ -14,11 +14,23 @@ services:
     build: .
     volumes:
       - .:/code/
+    depends_on:
+      - server
     command: >
       sh -c "pipenv run python src/manage.py watch_transactions"
   check_trustlines:
     build: .
     volumes:
       - .:/code/
+    depends_on:
+      - server
     command: >
       sh -c "pipenv run python src/manage.py check_trustlines --loop"
+  poll_pending_deposits:
+    build: .
+    volumes:
+      - .:/code/
+    depends_on:
+      - server
+    command: >
+      sh -c "pipenv run python src/manage.py poll_pending_deposits --loop"
