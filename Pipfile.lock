@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "11a02848e78ebca635e34a876bb4e03781c24145904de69bffeab91613d85896"
+            "sha256": "a7a4f3844a4be96884b39ed891838b4a23712e7f1a32005f32d3c072db6507cd"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -143,10 +143,10 @@
         },
         "django-polaris": {
             "hashes": [
-                "sha256:471a326a0c9adb313afb5314201e9e46147f520d067c93ed940553c38e7c55b1"
+                "sha256:c7f71865b2ed52401b436421897a468aa4bd18dee1199d3bb8184059c0fb23e7"
             ],
             "index": "pypi",
-            "version": "==0.9.5"
+            "version": "==0.9.6"
         },
         "djangorestframework": {
             "hashes": [
