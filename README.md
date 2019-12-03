@@ -4,7 +4,7 @@
 
 IMPORTANT DISCLAIMER: This code should not be used in production without a thorough security audit.
 
-This project demonstrates how to use the `django-polaris` resuable django app to run an anchor server.
+This project demonstrates how to use the `django-polaris` reusable django app to run an anchor server.
 
 Its goal is to provide a community example implementation of [SEP 24](https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0024.md) (and the related SEP [10](https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0010.md)). We hope to make it easier for anchors to integrate with the Stellar network, as they can refer to this sample implementation in their own development. Note that this implementation itself should not be utilized directly (i.e., forked) for handling real amounts of real money.
 
