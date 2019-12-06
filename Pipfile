@@ -22,7 +22,7 @@ psycopg2-binary = "*"
 django-cors-headers = "*"
 toml = "*"
 pyjwt = "*"
-django-polaris = "==0.9.6"
+django-polaris = "==0.9.7"
 
 [requires]
 python_version = "3.7"
