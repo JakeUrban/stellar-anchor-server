@@ -13,7 +13,7 @@ pytest-cov = "*"
 coveralls = "*"
 
 [packages]
-django = "==2.2.4"
+django = "==2.2.8"
 django-environ = "*"
 djangorestframework = "*"
 gunicorn = "*"
@@ -22,7 +22,7 @@ psycopg2-binary = "*"
 django-cors-headers = "*"
 toml = "*"
 pyjwt = "*"
-django-polaris = "==0.9.8"
+django-polaris = "==0.9.9"
 
 [requires]
 python_version = "3.7"
